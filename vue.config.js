@@ -14,12 +14,10 @@ const {
   devPort,
   providePlugin,
   build7z,
-  donation,
   imageCompression,
 } = require('./src/config')
-const { webpackBarName, webpackBanner, donationConsole } = require('layouts')
+const { webpackBarName, webpackBanner } = require('layouts')
 
-if (donation) donationConsole()
 const { version, author } = require('./package.json')
 const Webpack = require('webpack')
 const WebpackBar = require('webpackbar')
