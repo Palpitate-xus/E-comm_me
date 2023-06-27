@@ -85,7 +85,7 @@
       const userAgent = navigator.userAgent
       if (userAgent.includes('Juejin')) {
         this.$baseAlert(
-          'vue-admin-beautiful不支持在掘金内置浏览器演示，请手动复制以下地址到浏览器中查看http://mpfhrd48.sanxing.uz7.cn/vue-admin-beautiful'
+          '不支持掘金内置浏览器'
         )
       }
       const isMobile = this.handleIsMobile()

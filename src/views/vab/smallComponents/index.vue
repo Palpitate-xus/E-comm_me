@@ -27,7 +27,7 @@
           <vab-profile
             v-if="profileShow"
             avatar="https://picsum.photos/80/80?random=2"
-            user-name="chuzhixin"
+            user-name="Palpitate-xus"
           ></vab-profile>
         </el-card>
       </el-col>
