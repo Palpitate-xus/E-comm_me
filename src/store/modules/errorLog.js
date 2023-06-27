@@ -1,28 +1,28 @@
-/**
-
- * @description 异常捕获的状态拦截，请勿修改
- */
-
-const state = () => ({
-  errorLogs: [],
-})
-const getters = {
-  errorLogs: (state) => state.errorLogs,
+const state = {
+  logs: []
 }
+
 const mutations = {
-  addErrorLog(state, errorLog) {
-    state.errorLogs.push(errorLog)
+  ADD_ERROR_LOG: (state, log) => {
+    state.logs.push(log)
   },
-  clearErrorLog: (state) => {
-    state.errorLogs.splice(0)
-  },
+  CLEAR_ERROR_LOG: (state) => {
+    state.logs.splice(0)
+  }
 }
+
 const actions = {
-  addErrorLog({ commit }, errorLog) {
-    commit('addErrorLog', errorLog)
+  addErrorLog({ commit }, log) {
+    commit('ADD_ERROR_LOG', log)
   },
   clearErrorLog({ commit }) {
-    commit('clearErrorLog')
-  },
+    commit('CLEAR_ERROR_LOG')
+  }
 }
-export default { state, getters, mutations, actions }
+
+export default {
+  namespaced: true,
+  state,
+  mutations,
+  actions
+}
