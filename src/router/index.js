@@ -14,7 +14,6 @@ import nestedRouter from './modules/nested'
 
 /**
  * Note: sub-menu only appear when route children.length >= 1
- * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
  *
  * hidden: true                   if set true, item will not show in the sidebar(default is false)
  * alwaysShow: true               if set true, will always show the root menu
@@ -23,7 +22,7 @@ import nestedRouter from './modules/nested'
  * redirect: noRedirect           if set noRedirect will no redirect in the breadcrumb
  * name:'router-name'             the name is used by <keep-alive> (must set!!!)
  * meta : {
-    roles: ['admin','editor']    control the page roles (you can set multiple roles)
+    roles: ['admin','customer', 'supplier']    control the page roles (you can set multiple roles)
     title: 'title'               the name show in sidebar and breadcrumb (recommend set)
     icon: 'svg-name'/'el-icon-x' the icon show in the sidebar
     noCache: true                if set true, the page will no be cached(default is false)
@@ -91,7 +90,7 @@ export const constantRoutes = [
         path: 'index',
         component: () => import('@/views/documentation/index'),
         name: 'Documentation',
-        meta: { title: 'Documentation', icon: 'documentation', affix: true }
+        meta: { title: '商品管理', icon: 'documentation', affix: true }
       }
     ]
   },
@@ -104,7 +103,7 @@ export const constantRoutes = [
         path: 'index',
         component: () => import('@/views/guide/index'),
         name: 'Guide',
-        meta: { title: 'Guide', icon: 'guide', noCache: true }
+        meta: { title: '顾客管理', icon: 'guide', noCache: true }
       }
     ]
   },
@@ -118,7 +117,7 @@ export const constantRoutes = [
         path: 'index',
         component: () => import('@/views/profile/index'),
         name: 'Profile',
-        meta: { title: 'Profile', icon: 'user', noCache: true }
+        meta: { title: '订单管理', icon: 'user', noCache: true }
       }
     ]
   }
@@ -136,7 +135,7 @@ export const asyncRoutes = [
     alwaysShow: true, // will always show the root menu
     name: 'Permission',
     meta: {
-      title: 'Permission',
+      title: '权限管理',
       icon: 'lock',
       roles: ['admin', 'editor'] // you can set roles in root nav
     },
@@ -146,7 +145,7 @@ export const asyncRoutes = [
         component: () => import('@/views/permission/page'),
         name: 'PagePermission',
         meta: {
-          title: 'Page Permission',
+          title: '页面权限',
           roles: ['admin'] // or you can only set roles in sub nav
         }
       },
@@ -164,7 +163,7 @@ export const asyncRoutes = [
         component: () => import('@/views/permission/role'),
         name: 'RolePermission',
         meta: {
-          title: 'Role Permission',
+          title: '角色权限',
           roles: ['admin']
         }
       }
