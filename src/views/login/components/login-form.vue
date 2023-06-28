@@ -44,9 +44,6 @@
         </a-input-password>
       </a-form-item>
       <a-space :size="16" direction="vertical">
-        <div class="login-form-password-actions">
-          <a-link>{{ $t('login.form.forgetPassword') }}</a-link>
-        </div>
         <a-button type="primary" html-type="submit" long :loading="loading">
           {{ $t('login.form.login') }}
         </a-button>
