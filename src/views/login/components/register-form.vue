@@ -119,7 +119,6 @@ export default defineComponent({
     });
     const handleRegister = async ({
       errors,
-      values,
     }: {
       errors: Record<string, ValidatedError> | undefined;
       values: LoginData;
