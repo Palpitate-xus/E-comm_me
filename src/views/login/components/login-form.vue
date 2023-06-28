@@ -1,7 +1,7 @@
 <template>
   <div class="login-form-wrapper">
     <div class="login-form-title">{{ $t('login.form.title') }}</div>
-    <div class="login-form-sub-title">{{ $t('login.form.title') }}</div>
+    <div class="login-form-sub-title">{{ $t('login.form.subtitle') }}</div>
     <div class="login-form-error-msg">{{ errorMessage }}</div>
     <a-form
       ref="loginForm"
@@ -45,9 +45,6 @@
       </a-form-item>
       <a-space :size="16" direction="vertical">
         <div class="login-form-password-actions">
-          <!--  <a-checkbox checked="rememberPassword" @change="setRememberPassword">
-            {{ $t('login.form.rememberPassword') }}
-          </a-checkbox> -->
           <a-link>{{ $t('login.form.forgetPassword') }}</a-link>
         </div>
         <a-button type="primary" html-type="submit" long :loading="loading">
@@ -62,7 +59,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive, onMounted } from 'vue';
+import { defineComponent, ref, reactive } from 'vue';
 import { useRouter } from 'vue-router';
 import { Message } from '@arco-design/web-vue';
 import { ValidatedError } from '@arco-design/web-vue/es/form/interface';
@@ -79,8 +76,8 @@ export default defineComponent({
     const { loading, setLoading } = useLoading();
     const userStore = useUserStore();
     const userInfo = reactive({
-      username: 'admin',
-      password: 'admin',
+      username: '',
+      password: '',
     });
     const handleSubmit = async ({
       errors,
@@ -108,15 +105,11 @@ export default defineComponent({
         }
       }
     };
-    const setRememberPassword = () => {
-      //
-    };
     return {
       loading,
       userInfo,
       errorMessage,
       handleSubmit,
-      setRememberPassword,
     };
   },
 });
