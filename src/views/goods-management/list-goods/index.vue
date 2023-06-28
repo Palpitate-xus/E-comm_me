@@ -1,16 +1,43 @@
 <template>
-  <a-space direction="vertical" size="large" fill>
-    <a-space>
-      <a-switch v-model="alignLeft" />
-      <span>Filter icon align left:</span>
-    </a-space>
-    <a-table
-      :columns="columns"
-      :data="data"
-      :filter-icon-align-left="alignLeft"
-      @change="handleChange"
-    />
-  </a-space>
+  <div class="container">
+    <Breadcrumb :items="['menu.goods', 'menu.goods.management']" />
+    <a-spin :loading="loading" style="width: 100%">
+      <a-card class="general-card">
+        <a-space direction="vertical" size="large" fill>
+          <a-space>
+            <a-switch v-model="alignLeft" />
+            <span>Filter icon align left:</span>
+            <a-row>
+              <a-col>
+                <a-button type="primary">
+                  <template #icon>
+                    <icon-plus />
+                  </template>
+                  批量导入
+                </a-button>
+              </a-col>
+              <a-col>
+                <a-button type="primary" status="danger">
+                  <template #icon>
+                    <icon-delete />
+                  </template>
+                  批量删除
+                </a-button>
+              </a-col>
+            </a-row>
+          </a-space>
+          <a-table
+            :columns="columns"
+            :data="data"
+            filter-icon-align-left
+            :row-selection="rowSelection"
+            @select="handleSelect"
+            @change="handleChange"
+          />
+        </a-space>
+      </a-card>
+    </a-spin>
+  </div>
 </template>
 
 <script>
@@ -18,7 +45,12 @@ import { reactive, ref } from 'vue';
 
 export default {
   setup() {
-    const alignLeft = ref(false);
+    const selectedKeys = ref([]);
+    const rowSelection = reactive({
+      type: 'checkbox',
+      showCheckedAll: true,
+      onlyCurrent: false,
+    });
     const columns = [
       {
         title: 'Name',
@@ -111,11 +143,17 @@ export default {
     // const handleChange = (data, extra, currentDataSource) => {
     //   console.log('change', data, extra, currentDataSource);
     // };
+    const handleSelect = (rowKeys, rowKey, record) => {
+      this.$message.info('change');
+      this.$message.info('change', rowKeys, rowKey, record);
+    };
     return {
       alignLeft,
       columns,
       data,
-      // handleChange,
+      rowSelection,
+      selectedKeys,
+      handleSelect,
     };
   },
 };
