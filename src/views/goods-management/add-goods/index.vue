@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Breadcrumb :items="['menu.promotion', 'menu.promotion.add']" />
+    <Breadcrumb :items="['menu.goods', 'menu.goods.add']" />
     <a-spin :loading="loading" style="width: 100%">
       <a-card class="general-card">
         <template #title> 创建商品 </template>
@@ -19,7 +19,7 @@
             help="有助于顾客选购商品的信息"
             feedback
           >
-            <a-input v-model="form.post" placeholder="请输入商品描述" />
+            <a-input v-model="form.description" placeholder="请输入商品描述" />
           </a-form-item>
           <a-form-item
             field="price"
@@ -27,23 +27,26 @@
             help="商品的价格"
             feedback
           >
-            <a-input v-model="form.post" placeholder="请输入商品价格" />
+            <a-input v-model="form.price" placeholder="请输入商品价格" />
           </a-form-item>
           <a-form-item
-            field="post"
+            field="stock"
             label="商品库存"
             help="商品此时的库存数量"
             feedback
           >
-            <a-input v-model="form.post" placeholder="请输入商品库存" />
+            <a-input v-model="form.stock" placeholder="请输入商品库存" />
           </a-form-item>
           <a-form-item
-            field="post"
+            field="pic"
             label="商品图片"
             help="请上传商品图片"
             feedback
           >
             <a-upload draggable accept=".jpg,.png,.jpeg" />
+          </a-form-item>
+          <a-form-item>
+            <a-button type="primary">提交</a-button>
           </a-form-item>
         </a-form>
       </a-card>
@@ -77,8 +80,10 @@ export default defineComponent({
     const submitModel = ref<UnitChannelModel>({} as UnitChannelModel);
     const form = reactive({
       name: '',
-      post: undefined,
-      tags: ['tag1'],
+      description: '',
+      stock: '',
+      price: '',
+      url: '',
     });
     const submitForm = async () => {
       setLoading(true);
