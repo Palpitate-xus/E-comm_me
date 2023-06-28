@@ -23,6 +23,8 @@ import locale403 from '@/views/exception/403/locale/zh-CN';
 import locale404 from '@/views/exception/404/locale/zh-CN';
 import locale500 from '@/views/exception/500/locale/zh-CN';
 
+import localePromotion from '@/views/promotion/add-promotion/locale/zh-CN';
+
 import localeUserInfo from '@/views/user/info/locale/zh-CN';
 import localeUserSetting from '@/views/user/setting/locale/zh-CN';
 /** simple end */
@@ -37,6 +39,11 @@ export default {
   'menu.profile': '详情页',
   'menu.visualization': '数据可视化',
   'menu.user': '个人中心',
+  'menu.goods': '商品管理',
+  'menu.goods.management': '商品管理',
+  'menu.goods.add': '新建商品',
+  'menu.promotion': '活动管理',
+  'menu.promotion.add': '新建活动',
   'navbar.docs': '文档中心',
   'navbar.action.locale': '切换为中文',
   ...localeSettings,
@@ -59,5 +66,6 @@ export default {
   ...locale500,
   ...localeUserInfo,
   ...localeUserSetting,
+  ...localePromotion,
   /** simple end */
 };
