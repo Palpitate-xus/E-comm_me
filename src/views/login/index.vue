@@ -10,7 +10,8 @@
     <LoginBanner />
     <div class="content">
       <div class="content-inner">
-        <LoginForm />
+        <LoginForm v-if="showLogin" @child-message="updateMessage" />
+        <registerForm v-else @child-message="updateMessage" />
       </div>
       <div class="footer">
         <Footer />
@@ -20,16 +21,28 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref } from 'vue';
 import Footer from '@/components/footer/index.vue';
 import LoginBanner from './components/banner.vue';
 import LoginForm from './components/login-form.vue';
+import registerForm from './components/register-form.vue';
 
 export default defineComponent({
   components: {
     LoginBanner,
     LoginForm,
+    registerForm,
     Footer,
+  },
+  setup() {
+    const showLogin = ref(false);
+    function updateMessage(message) {
+      showLogin.value = message;
+    }
+    return {
+      showLogin,
+      updateMessage,
+    };
   },
 });
 </script>
